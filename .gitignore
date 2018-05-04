@@ -1,3 +1,7 @@
+.project  
+.classpath
+pom.properties
+
 # Compiled class file
 *.class
 
