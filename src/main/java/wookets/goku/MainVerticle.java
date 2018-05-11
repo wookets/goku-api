@@ -12,6 +12,7 @@ public class MainVerticle extends AbstractVerticle {
 		HttpServer server = vertx.createHttpServer();
 		
 		Router router = Router.router(vertx);
+		router.post("/publish/:topic").handler((new PublishHandler())::handle);
 		router.route().handler(ctx -> {
 			HttpServerResponse res = ctx.response();
 			res.putHeader("content-type", "text/plain");
@@ -19,5 +20,6 @@ public class MainVerticle extends AbstractVerticle {
 		});
 		server.requestHandler(router::accept).listen(8080);
         System.out.println("HTTP server started on port 8080");
-    }
+	}
+	
 }
